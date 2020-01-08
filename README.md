@@ -1,4 +1,4 @@
-============================================ Day 1 ============================================
+================= Day 1 =================
 
 ### Check status es
 ```
@@ -23,6 +23,31 @@ GET /customer/_doc/1
 curl -H "Content-Type: application/json" -XPOST "localhost:9200/bank/_bulk?pretty&refresh" --data-binary "@accounts.json"
 ```
 
-============================================ Day 2 ============================================
+================= Day 1 =================
+
+### Search all
+```
+GET /customer/_search
+{
+  "query": { "match_all": {} },
+  "sort": [
+    { "age": "asc" }
+  ],
+  "from": 0,
+  "size": 10
+}
+```
+
+### Search
+```
+GET /customer/_search
+{
+  "query": { 
+    "match": {
+      "name": "john doe"
+    } 
+  }
+}
+```
 
 
