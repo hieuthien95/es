@@ -21,12 +21,10 @@ brew tap elastic/tap: https://www.elastic.co/guide/en/elasticsearch/reference/cu
 > elasticsearch --version
 
 
-- start es: localhost:9200
+- start es: 
 > elasticsearch
+localhost:9200
 
-- start kibana: localhost:5601/app/kibana
+- start kibana: 
 > kibana
-
-===============================================================
-
-GET http://localhost:9200/_all
+localhost:5601/app/kibana
