@@ -1,4 +1,6 @@
-Install: https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-install.html
+Install: 
+https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-install.html
+https://www.elastic.co/guide/en/elasticsearch/reference/current/brew.html
 
 Tutorial: https://www.elastic.co/guide/en/elastic-stack-get-started/7.5/get-started-elastic-stack.html
 
