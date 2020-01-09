@@ -106,10 +106,10 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-
 
 ### avg
 ```
-POST /customer/_search?size=0
+POST /kibana_sample_data_ecommerce/_search?size=0
 {
     "aggs" : {
-        "avg_age" : { "avg" : { "field" : "age" } }
+        "avg_price" : { "avg" : { "field" : "products.base_price" } }
     }
 }
 ```
