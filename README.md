@@ -104,3 +104,26 @@ GET /customer/_search
 ================= Day 2 =================
 https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-aggregations.html
 
+### avg
+```
+POST /customer/_search?size=0
+{
+    "aggs" : {
+        "avg_age" : { "avg" : { "field" : "age" } }
+    }
+}
+```
+```
+POST /customer/_search?size=0
+{
+    "aggs" : {
+        "avg_age" : {
+            "avg" : {
+                "script" : {
+                    "source" : "doc.age.value"
+                }
+            }
+        }
+    }
+}
+```
