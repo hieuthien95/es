@@ -1,4 +1,5 @@
 ================= Day 1 =================
+https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-index.html
 
 ### Check status es
 ```
@@ -23,9 +24,10 @@ GET /customer/_doc/1
 curl -H "Content-Type: application/json" -XPOST "localhost:9200/bank/_bulk?pretty&refresh" --data-binary "@accounts.json"
 ```
 
-================= Day 1 =================
+================= Day 2 =================
+https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-search.html#getting-started-search
 
-### Search all
+### match_all
 ```
 GET /customer/_search
 {
@@ -38,7 +40,7 @@ GET /customer/_search
 }
 ```
 
-### Search
+### match
 ```
 GET /customer/_search
 {
@@ -50,4 +52,55 @@ GET /customer/_search
 }
 ```
 
+### match_phrase
+```
+GET /customer/_search
+{
+  "query": { 
+    "match_phrase": {
+      "name": "john doe"
+    } 
+  }
+}
+```
+
+### bool: match / should / must_not 
+```
+GET /customer/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "age": "123" } }
+      ],
+      "must_not": [
+        { "match": { "name" : "J2ohn D2oe" } }
+      ]
+    }
+  }
+}
+```
+
+### range
+```
+GET /customer/_search
+{
+  "query": {
+    "bool": {
+      "must": { "match_all": {} },
+      "filter": {
+        "range": {
+          "age": {
+            "gte": 30,
+            "lte": 130
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+================= Day 2 =================
+https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-aggregations.html
 
