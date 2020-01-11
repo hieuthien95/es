@@ -127,3 +127,91 @@ POST /customer/_search?size=0
     }
 }
 ```
+
+================= Day 3 =================
+
+### cardinality
+```
+POST /customer/_search?size=0
+{
+    "aggs" : {
+        "type_count" : {
+            "cardinality" : {
+                "field" : "age"
+            }
+        }
+    }
+}
+```
+
+### extended_stats / stats
+```
+GET /kibana_sample_data_ecommerce/_search
+{
+    "size": 0,
+    "aggs" : {
+        "age_stats" : { "extended_stats" : { "field" : "products.base_price" } }
+    }
+}
+```
+
+### min/max
+```
+POST /kibana_sample_data_ecommerce/_search?size=0&pretty
+{
+    "aggs" : {
+        "max_price" : { "max" : { "field" : "products.base_price" } }
+    }
+}
+```
+
+### percentiles / percentile_ranks
+```
+GET /kibana_sample_data_ecommerce/_search
+{
+    "size": 0,
+    "aggs" : {
+        "demo_1_2_3" : {
+            "percentiles" : {
+                "field" : "products.base_price"
+                // "percents" : [95, 99, 99.9]
+            }
+        }
+    }
+}
+```
+
+### value_count
+```
+POST /kibana_sample_data_ecommerce/_search?size=0
+{
+    "aggs" : {
+        "price_count" : { "value_count" : { "field" : "products.base_price" } }
+    }
+}
+```
+
+================= Day 3 =================
+
+```
+GET /kibana_sample_data_ecommerce/_search?pretty
+{
+  "query": { 
+    "bool": { 
+      "must": [
+        { "match": { "currency" : "EUR"        }},
+        { "match": {  "customer_first_name" : "Eddie" }}
+      ],
+      "filter": [ 
+        { "terms":  { "day_of_week" : ["Monday", "Tuesday"] }},
+        { "range": { "day_of_week_i": { "gte": "1" }}}
+      ]
+    }
+  }
+}
+```
+
+
+
+
+
