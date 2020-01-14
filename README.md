@@ -8,6 +8,13 @@ curl "localhost:9200/_cat/indices?v"
 
 ### Create or Update index
 ```
+PUT /customer/_doc
+{
+  "name": "John Doe"
+}
+```
+
+```
 PUT /customer/_doc/1
 {
   "name": "John Doe"
@@ -17,6 +24,15 @@ PUT /customer/_doc/1
 ### Get 1 index
 ```
 GET /customer/_doc/1
+```
+
+### Delete index
+```
+DELETE /schools
+```
+
+```
+DELETE schools/_doc/4  
 ```
 
 ### Create index BULK
@@ -125,6 +141,20 @@ POST /customer/_search?size=0
             }
         }
     }
+}
+```
+
+### meta
+```
+POST /schools/_search?size=0
+{
+   "aggs" : {
+      "min_fees" : { "avg" : { "field" : "fees" } ,
+         "meta" :{
+            "dsc" :"Lowest Fees This Year"
+         }
+      }
+   }
 }
 ```
 
